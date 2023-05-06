@@ -1,0 +1,23 @@
+.ams-header {
+	display: flex;
+	justify-content: center;
+	width: calc(100% - 1rem * 2);
+	height: 6rem;
+	border-top: 4px solid var(--ams-red);
+	padding: 0 1rem;
+}
+
+.ams-header-container {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: var(--ams-guttered-width);
+	height: 100%;
+	border-bottom: 1px solid var(--ams-gray1);
+}
+
+.ams-header-logo {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
