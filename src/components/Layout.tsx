@@ -1,7 +1,15 @@
 import Head from "next/head";
 import { Header } from "./Header";
 
-export const Layout = ({ children, title, description }: { children?: any; title?: string; description?: string }) => {
+export const Layout = ({
+	children,
+	title,
+	description
+}: {
+	children?: any;
+	title?: string;
+	description?: string;
+}) => {
 	return (
 		<>
 			<Head>

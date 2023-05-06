@@ -1,7 +1,12 @@
 import { useRouter } from "next/router";
 import { AnchorHTMLAttributes, DetailedHTMLProps } from "react";
 
-export const Link = ({ children, ...rest }: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> & { "data-href"?: string }) => {
+export const Link = ({
+	children,
+	...rest
+}: DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement> & {
+	"data-href"?: string;
+}) => {
 	const route = useRouter();
 
 	let newHref =
