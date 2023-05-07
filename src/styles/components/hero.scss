@@ -1,0 +1,52 @@
+.ams-hero {
+	display: flex;
+	justify-content: center;
+	width: calc(100% - var(--padding-x, var(--default-padding-x)) * 2);
+	--default-padding-x: 1rem;
+	--default-padding-y: 4rem;
+	padding: var(--padding-y, var(--default-padding-y)) var(--padding-x, var(--default-padding-x));
+}
+
+.ams-hero.sm {
+	--padding-y: 2rem;
+}
+
+.ams-hero.md {
+	--padding-y: var(var(--default-padding-y));
+}
+
+.ams-hero.lg {
+	--padding-y: 6rem;
+}
+
+.ams-hero.xl {
+	--padding-y: 8rem;
+}
+
+.ams-hero.xxl {
+	--padding-y: 12rem;
+}
+
+@media (max-width: 1400px) {
+	.ams-hero {
+		--padding-x: 2rem;
+	}
+}
+
+.ams-hero.dir-h,
+.ams-hero-body.dir-h {
+	flex-direction: row;
+}
+
+.ams-hero.dir-v,
+.ams-hero-body.dir-v {
+	flex-direction: column;
+}
+
+.ams-hero-body {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	max-width: var(--ams-guttered-width);
+}

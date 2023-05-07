@@ -1,32 +1,76 @@
+$ams-red: rgb(243, 18, 18);
+$ams-orange: rgb(253, 110, 8);
+$ams-yellow: rgb(255, 199, 0);
+$ams-green: rgb(14, 163, 0);
+$ams-blue: rgb(29, 86, 236);
+$ams-purple: rgb(139, 16, 236);
+$ams-pink: rgb(255, 9, 216);
+
+$ams-gray1: rgb(230, 230, 230);
+$ams-gray2: rgb(193, 193, 193);
+$ams-gray3: rgb(134, 134, 134);
+$ams-gray4: rgb(99, 99, 99);
+$ams-gray5: rgb(43, 43, 43);
+$ams-gray6: rgb(18, 18, 18);
+
+$ams-white: rgb(255, 255, 255);
+
 /* Primitive styles */
 @use "reset";
 @use "fonts";
 @use "typography";
+@use "a11y";
+@use "flex";
 
 /* Component styles */
 @use "components/header";
+@use "components/button";
+@use "components/hero";
+
+/* Page styles */
+@use "pages/home";
+
+/* Built-in modules */
+@use "sass:color";
+
+@mixin generate_colourways($name, $property) {
+	--ams-#{$name}: #{$property};
+	--ams-#{$name}-hover: #{if(
+			color.lightness($property) > 30%,
+			color.adjust($property, $lightness: -8%),
+			color.adjust($property, $lightness: 8%)
+		)};
+	--ams-#{$name}-active: #{if(
+			color.lightness($property) > 30%,
+			color.adjust($property, $lightness: -16%),
+			color.adjust($property, $lightness: 16%)
+		)};
+	--ams-#{$name}-lighter: #{color.adjust($property, $lightness: 20%)};
+}
 
 /* Theme */
 :root {
 	--ams-background: var(--ams-white);
 	--ams-text: var(--ams-gray6);
+	--ams-text-hover: var(--ams-gray6-hover);
+	--ams-text-active: var(--ams-gray6-active);
 
-	--ams-red: rgb(243, 18, 18);
-	--ams-orange: rgb(253, 110, 8);
-	--ams-yellow: rgb(255, 199, 0);
-	--ams-green: rgb(14, 163, 0);
-	--ams-blue: rgb(29, 86, 236);
-	--ams-purple: rgb(139, 16, 236);
-	--ams-pink: rgb(255, 9, 216);
+	@include generate_colourways(red, $ams-red);
+	@include generate_colourways(orange, $ams-orange);
+	@include generate_colourways(yellow, $ams-yellow);
+	@include generate_colourways(green, $ams-green);
+	@include generate_colourways(blue, $ams-blue);
+	@include generate_colourways(purple, $ams-purple);
+	@include generate_colourways(pink, $ams-pink);
 
-	--ams-gray1: rgb(230, 230, 230);
-	--ams-gray2: rgb(193, 193, 193);
-	--ams-gray3: rgb(134, 134, 134);
-	--ams-gray4: rgb(99, 99, 99);
-	--ams-gray5: rgb(43, 43, 43);
-	--ams-gray6: rgb(18, 18, 18);
+	@include generate_colourways(gray1, $ams-gray1);
+	@include generate_colourways(gray2, $ams-gray2);
+	@include generate_colourways(gray3, $ams-gray3);
+	@include generate_colourways(gray4, $ams-gray4);
+	@include generate_colourways(gray5, $ams-gray5);
+	@include generate_colourways(gray6, $ams-gray6);
 
-	--ams-white: rgb(255, 255, 255);
+	@include generate_colourways(white, $ams-white);
 
 	--ams-font: "Red Hat Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -45,4 +89,20 @@ body {
 body {
 	background-color: var(--ams-background);
 	color: var(--ams-text);
+}
+
+::selection {
+	background-color: var(--ams-red);
+	color: var(--ams-white);
+}
+
+:focus-visible {
+	outline: 2px solid var(--ams-red);
+	outline-offset: 4px;
+	box-shadow: 0px 0px 0px 4px var(--ams-white);
+}
+
+a {
+	color: var(--ams-red);
+	font-weight: 500;
 }

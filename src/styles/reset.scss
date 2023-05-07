@@ -33,8 +33,6 @@ samp,
 small,
 strike,
 strong,
-sub,
-sup,
 tt,
 var,
 b,
@@ -121,4 +119,9 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+sup,
+sub {
+	font-size: 16px;
 }

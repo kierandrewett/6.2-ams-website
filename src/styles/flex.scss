@@ -1,0 +1,51 @@
+.flex {
+	display: flex;
+}
+
+.ai-center {
+	align-items: center;
+}
+
+.ai-start {
+	align-items: flex-start;
+}
+
+.ai-end {
+	align-items: flex-end;
+}
+
+.jc-center {
+	justify-content: center;
+}
+
+.jc-start {
+	justify-content: flex-start;
+}
+
+.jc-end {
+	justify-content: flex-end;
+}
+
+.gap-sm {
+	gap: 1rem;
+}
+
+.gap-md {
+	gap: 2rem;
+}
+
+.gap-lg {
+	gap: 4rem;
+}
+
+.gap-xl {
+	gap: 8rem;
+}
+
+.dir-col {
+	flex-direction: column;
+}
+
+.dir-row {
+	flex-direction: row;
+}

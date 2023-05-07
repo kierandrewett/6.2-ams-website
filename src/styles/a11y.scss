@@ -1,0 +1,29 @@
+.ams-visually-hidden:not(:focus-visible) {
+	position: absolute;
+	overflow: hidden;
+	margin: 0;
+	width: 1px;
+	height: 1px;
+	clip-path: inset(100%);
+	clip: rect(1px, 1px, 1px, 1px);
+	white-space: nowrap;
+}
+
+.ams-a11y {
+	display: flex;
+	flex-direction: column;
+}
+
+.ams-a11y a {
+	offset: 0;
+	position: absolute;
+	z-index: 1999;
+
+	padding: 1rem;
+
+	text-decoration: none;
+	font-weight: 500;
+
+	background-color: var(--ams-white);
+	color: var(--ams-red);
+}

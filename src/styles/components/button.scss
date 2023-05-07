@@ -1,0 +1,50 @@
+.ams-button {
+	display: flex;
+
+	appearance: none;
+	border: none;
+
+	width: fit-content;
+	height: fit-content;
+
+	--default-bg-colour: transparent;
+	--default-hover-bg-colour: var(--ams-gray1);
+	--default-active-bg-colour: var(--ams-gray2);
+	--default-text-colour: var(--ams-text);
+	--default-border-radii: 1.25rem 1.25rem 0.875rem 0.875rem;
+	--default-padding: 0.725rem 1.25rem;
+
+	background-color: var(--bg-colour, var(--default-bg-colour));
+	color: var(--text-colour, var(--default-text-colour));
+
+	border-radius: var(--border-radii, var(--default-border-radii));
+
+	font-weight: 600;
+	font-family: inherit;
+
+	padding: var(--padding, var(--default-padding));
+	font-size: 1.125rem;
+
+	transition: 0.075s background-color ease-out;
+
+	&:hover {
+		background-color: var(--hover-bg-colour, var(--default-hover-bg-colour));
+	}
+
+	&:active {
+		background-color: var(--active-bg-colour, var(--default-active-bg-colour));
+	}
+}
+
+.ams-button.icon {
+	--padding: 0.725rem;
+	--bg-colour: transparent;
+	--border-radii: 1.25rem;
+}
+
+.ams-button.red {
+	--bg-colour: var(--ams-red);
+	--text-colour: var(--ams-white);
+	--hover-bg-colour: var(--ams-red-hover);
+	--active-bg-colour: var(--ams-red-active);
+}

@@ -1,0 +1,115 @@
+.page-home {
+	@media (max-width: 1400px) {
+		#home-hero-ams-intro {
+			--padding-y: 4rem;
+		}
+
+		#home-hero-ams-intro > .ams-hero-body {
+			flex-direction: column;
+			gap: 3rem;
+
+			.ams-hero-body:first-child {
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+
+			.ams-hero-body:last-child {
+				padding-left: 0 !important;
+			}
+		}
+	}
+
+	#home-hero-ams-case-studies {
+		background-image: linear-gradient(
+			180deg,
+			var(--ams-white) 0%,
+			var(--ams-gray2-lighter) 80%
+		);
+	}
+
+	.ams-client-logos {
+		display: flex;
+		gap: 2.5rem;
+		flex-flow: row wrap;
+		justify-content: center;
+	}
+
+	.ams-client-logo {
+		height: 32px;
+		filter: grayscale(100%) brightness(0%);
+		opacity: 0.5;
+		transition: 0.5s all;
+	}
+
+	.ams-client-logo:hover {
+		filter: grayscale(0%);
+		opacity: 1;
+	}
+
+	.ams-netflix-case-study {
+		img {
+			width: 98px;
+			height: 98px;
+			border-radius: 1rem;
+			border: 3px solid var(--ams-red);
+		}
+
+		h4 > span {
+			color: var(--ams-gray4);
+		}
+	}
+
+	.ams-solutions-list {
+		display: flex;
+		width: 100%;
+		gap: 2rem;
+
+		> li {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			width: 100%;
+
+			p {
+				font-size: 1.125rem;
+				color: var(--ams-gray4);
+			}
+		}
+	}
+
+	.ams-solutions-list .ams-solution-info-container {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		.ams-solution-icon {
+			width: 2.5rem;
+			height: 2.5rem;
+			background-color: var(--ams-gray1);
+			border-radius: 0.5rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	.ams-solutions-list .ams-solution-features {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		font-size: 1.125rem;
+		font-weight: 600;
+
+		li {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			svg {
+				width: 1.5rem;
+				min-width: 1.5rem;
+			}
+		}
+	}
+}
