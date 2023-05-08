@@ -38,6 +38,13 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 				return error(400, "Captcha challenge failed, please try again.");
 			}
 
+			if (body.message.length < 25) {
+				return error(
+					400,
+					"Your message is too short, it needs to be at least 25 characters long."
+				);
+			}
+
 			if (!emailRegex.test(body.emailAddress)) {
 				return error(400, "Invalid email address.");
 			}
