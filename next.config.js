@@ -4,7 +4,7 @@ import { useID } from '@dothq/id';
 const nextConfig = {
     reactStrictMode: true,
     output: process.env.HTML ? "export" : undefined,
-    distDir: "dist",
+    distDir: process.env.VERCEL ? ".next" : "dist",
     webpack: (config, ctx) => {
         return config;
     },
