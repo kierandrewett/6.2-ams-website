@@ -8,7 +8,7 @@ export const MetaLogo = () => {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			<g clip-path="url(#clip0_44_21)">
+			<g clipPath="url(#clip0_44_21)">
 				<path
 					d="M58.2937 1.0119H64.3135L74.5494 19.5278L84.7851 1.0119H90.6746V31.437H85.7632V8.11847L76.7878 24.2655H72.1805L63.2051 8.11847V31.437H58.2937V1.0119Z"
 					fill="#1C2B33"
@@ -47,10 +47,10 @@ export const MetaLogo = () => {
 					y2="21.2775"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#0064E1" />
-					<stop offset="0.4" stop-color="#0064E1" />
-					<stop offset="0.83" stop-color="#0073EE" />
-					<stop offset="1" stop-color="#0082FB" />
+					<stop stopColor="#0064E1" />
+					<stop offset="0.4" stopColor="#0064E1" />
+					<stop offset="0.83" stopColor="#0073EE" />
+					<stop offset="1" stopColor="#0082FB" />
 				</linearGradient>
 				<linearGradient
 					id="paint1_linear_44_21"
@@ -60,8 +60,8 @@ export const MetaLogo = () => {
 					y2="11.0576"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop stop-color="#0082FB" />
-					<stop offset="1" stop-color="#0064E0" />
+					<stop stopColor="#0082FB" />
+					<stop offset="1" stopColor="#0064E0" />
 				</linearGradient>
 				<clipPath id="clip0_44_21">
 					<rect width="158.827" height="32" fill="white" />
