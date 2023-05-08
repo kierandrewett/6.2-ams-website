@@ -3,7 +3,7 @@ import { useID } from '@dothq/id';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    output: "export",
+    output: process.env.HTML ? "export" : "standalone",
     distDir: "dist",
     webpack: (config, ctx) => {
         return config;

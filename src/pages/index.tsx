@@ -17,8 +17,67 @@ import { Database } from "../icons/Database";
 import { FilledCheck } from "../icons/FilledCheck";
 import { Graphs } from "../icons/Graphs";
 
+enum FormState {
+	Idle,
+	Submitting,
+	Error,
+	Success
+}
+
+const wait = async (ms: number) => new Promise((r) => setTimeout(() => r(1), ms));
+
+const isJSON = (str: string) => {
+	try {
+		JSON.parse(str);
+	} catch (e) {
+		return false;
+	}
+	return true;
+};
+
 export default function Home() {
-	const [count, setCount] = React.useState(0);
+	const [formState, setFormState] = React.useState(FormState.Idle);
+	const [formError, setFormError] = React.useState<any>();
+
+	const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		const form = e.target as HTMLFormElement;
+
+		const name = form.elements.namedItem("name") as HTMLInputElement;
+		const emailAddress = form.elements.namedItem("email_address") as HTMLInputElement;
+		const message = form.elements.namedItem("message") as HTMLTextAreaElement;
+
+		if (!name || !emailAddress || !message) return;
+
+		setFormError(null);
+		setFormState(FormState.Submitting);
+
+		await wait(1000);
+
+		fetch("/api/contact", {
+			method: "POST",
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				name: name.value,
+				emailAddress: emailAddress.value,
+				message: message.value
+			})
+		}).then(async (res) => {
+			const text = await res.text();
+
+			if (res.status == 200) {
+				setFormState(FormState.Success);
+			} else {
+				setFormState(FormState.Error);
+				setFormError(isJSON(text) ? JSON.parse(text).message : text);
+			}
+		});
+	};
 
 	return (
 		<Layout page={"home"}>
@@ -223,6 +282,93 @@ export default function Home() {
 							</Button>
 						</li>
 					</ul>
+				</HeroBody>
+			</Hero>
+
+			<Hero id={"home-hero-ams-contact"}>
+				<HeroBody className={"jc-center ai-center gap-lg"}>
+					<div className={"flex dir-col gap-sm ai-center jc-center"}>
+						<h2>Get in touch with us</h2>
+						<p>
+							We’d love to show you how the AMS suite of products can help accelerate
+							your business.
+						</p>
+					</div>
+
+					{formState !== FormState.Success ? (
+						<form
+							className={"ams-form"}
+							style={{ maxWidth: "400px", minWidth: "400px" }}
+							onSubmit={(e) => onFormSubmit(e)}
+						>
+							<label
+								className={"ams-visually-hidden"}
+								htmlFor={"ams-contact-form--name"}
+							>
+								Full name:
+							</label>
+							<input
+								id={"ams-contact-form--name"}
+								className={"ams-input"}
+								type={"text"}
+								name={"name"}
+								placeholder={"Full name"}
+								disabled={formState == FormState.Submitting}
+								required
+							/>
+							<label
+								className={"ams-visually-hidden"}
+								htmlFor={"ams-contact-form--email_address"}
+							>
+								Email address:
+							</label>
+							<input
+								id={"ams-contact-form--email_address"}
+								className={"ams-input"}
+								type={"email"}
+								name={"email_address"}
+								placeholder={"Email address"}
+								disabled={formState == FormState.Submitting}
+								required
+							/>
+							<label
+								className={"ams-visually-hidden"}
+								htmlFor={"ams-contact-form--message"}
+							>
+								Enter a message:
+							</label>
+							<textarea
+								id={"ams-contact-form--message"}
+								className={"ams-input"}
+								name={"message"}
+								placeholder={"Message"}
+								minLength={25}
+								disabled={formState == FormState.Submitting}
+								style={{
+									resize: "vertical",
+									minHeight: "150px",
+									maxHeight: "300px"
+								}}
+								required
+							/>
+
+							{formState == FormState.Error && <Highlight>{formError}</Highlight>}
+
+							<Button
+								colour={"red"}
+								type={"submit"}
+								style={{ margin: "0 auto" }}
+								disabled={formState == FormState.Submitting}
+							>
+								{formState == FormState.Submitting ? "Sending..." : "Send message"}
+							</Button>
+						</form>
+					) : (
+						<p style={{ height: "400px" }}>
+							Thank you! We have received your message and will get back to you
+							shortly.
+						</p>
+					)}
 				</HeroBody>
 			</Hero>
 		</Layout>

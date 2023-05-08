@@ -10,9 +10,11 @@
         "lint": "node scripts/build.js lint"
     },
     "dependencies": {
+        "@planetscale/database": "^1.7.0",
         "@types/node": "20.1.0",
         "@types/react": "18.2.6",
         "@types/react-dom": "18.2.4",
+        "axios": "^1.4.0",
         "clsx": "^1.2.1",
         "next": "13.4.1",
         "prettier": "^2.8.8",
