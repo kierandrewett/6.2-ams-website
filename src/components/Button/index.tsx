@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 export const Button = ({
 	children,
@@ -10,6 +10,7 @@ export const Button = ({
 	children?: any;
 	icon?: boolean;
 	colour?: string;
+	href?: string;
 } & DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>) => {
 	const className = clsx(
 		"ams-button",
@@ -20,9 +21,12 @@ export const Button = ({
 		rest.className || ""
 	);
 
-	return (
-		<button {...rest} className={className}>
-			{children}
-		</button>
+	return React.createElement(
+		rest.href ? "a" : "button",
+		{
+			...rest,
+			className
+		},
+		children
 	);
 };

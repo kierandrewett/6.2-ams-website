@@ -7,6 +7,13 @@
 	width: fit-content;
 	height: fit-content;
 
+	user-select: none;
+
+	align-items: center;
+	gap: 0.5rem;
+
+	text-decoration: none;
+
 	--default-bg-colour: transparent;
 	--default-hover-bg-colour: var(--ams-gray1);
 	--default-active-bg-colour: var(--ams-gray2);

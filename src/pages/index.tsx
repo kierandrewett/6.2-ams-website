@@ -5,10 +5,12 @@ import { MetaLogo } from "../art/client-logos/Meta";
 import { NetflixLogo } from "../art/client-logos/Netflix";
 import { TwitterLogo } from "../art/client-logos/Twitter";
 import { HomeHeroAMSFeatures } from "../art/home-hero-ams-features";
+import { Button } from "../components/Button";
 import Hero, { HeroBody } from "../components/Hero";
 import { Layout } from "../components/Layout";
 import { Eyebrow, Highlight } from "../components/Typography";
 import { ArrowDown } from "../icons/ArrowDown";
+import { ArrowRight } from "../icons/ArrowRight";
 import { Book } from "../icons/Book";
 import { Chart } from "../icons/Chart";
 import { Database } from "../icons/Database";
@@ -114,6 +116,12 @@ export default function Home() {
 									Simple, fast migration
 								</li>
 							</ul>
+							<Button
+								href={"/solutions/amstore"}
+								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
+							>
+								Learn more <ArrowRight width={20} />
+							</Button>
 						</li>
 						<li>
 							<div className={"ams-solution-info-container"}>
@@ -141,6 +149,12 @@ export default function Home() {
 									Simple, fast migration
 								</li>
 							</ul>
+							<Button
+								href={"/solutions/ambuilder"}
+								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
+							>
+								Learn more <ArrowRight width={20} />
+							</Button>
 						</li>
 						<li>
 							<div className={"ams-solution-info-container"}>
@@ -168,6 +182,12 @@ export default function Home() {
 									Simple, fast migration
 								</li>
 							</ul>
+							<Button
+								href={"/solutions/amreporter"}
+								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
+							>
+								Learn more <ArrowRight width={20} />
+							</Button>
 						</li>
 						<li>
 							<div className={"ams-solution-info-container"}>
@@ -195,6 +215,12 @@ export default function Home() {
 									Simple, fast migration
 								</li>
 							</ul>
+							<Button
+								href={"/solutions/amcat"}
+								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
+							>
+								Learn more <ArrowRight width={20} />
+							</Button>
 						</li>
 					</ul>
 				</HeroBody>

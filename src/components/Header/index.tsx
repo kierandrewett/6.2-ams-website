@@ -64,7 +64,9 @@ export const Header = () => {
 					</nav>
 
 					<div className={"ams-header-cta"}>
-						<Button colour={"red"}>Get in touch</Button>
+						<Button colour={"red"} href={"/contact"}>
+							Get in touch
+						</Button>
 
 						<Button
 							icon
