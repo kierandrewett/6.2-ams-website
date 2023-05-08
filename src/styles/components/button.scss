@@ -56,3 +56,8 @@
 	--hover-bg-colour: var(--ams-red-hover);
 	--active-bg-colour: var(--ams-red-active);
 }
+
+.ams-button[disabled] {
+	opacity: 0.25;
+	pointer-events: none;
+}

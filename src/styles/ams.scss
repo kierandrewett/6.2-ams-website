@@ -26,6 +26,8 @@ $ams-white: rgb(255, 255, 255);
 @use "components/header";
 @use "components/button";
 @use "components/hero";
+@use "components/form";
+@use "components/footer";
 
 /* Page styles */
 @use "pages/home";

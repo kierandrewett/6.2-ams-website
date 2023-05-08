@@ -1,0 +1,135 @@
+.ams-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: var(--ams-white);
+}
+
+.ams-footer-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: var(--ams-guttered-width);
+	padding: 5rem 1rem;
+	gap: 5rem;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid var(--ams-gray1);
+}
+
+@media (max-width: 1400px) {
+	.ams-footer-container {
+		padding: 5rem 2rem;
+	}
+}
+
+.ams-footer-links {
+	display: flex;
+	flex-direction: row;
+	gap: 6.5rem;
+	font-size: 1rem;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.ams-footer-links .ams-footer-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100px;
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+
+		li {
+			display: flex;
+		}
+
+		a {
+			text-decoration: none;
+			width: 100%;
+			color: var(--ams-gray4);
+
+			&:hover {
+				color: var(--ams-red);
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.ams-footer-links {
+		gap: 4rem;
+		font-size: 1.25rem;
+	}
+
+	.ams-footer-links .ams-footer-section {
+		width: 100%;
+	}
+
+	.ams-footer-section {
+		gap: 1.5rem !important;
+
+		ul {
+			gap: 1rem !important;
+		}
+	}
+}
+
+.ams-footer-links .ams-footer-section-title {
+	font-weight: 500;
+}
+
+.ams-footer-info {
+	display: flex;
+	flex-direction: column;
+	gap: 1.125rem;
+	align-items: center;
+}
+
+.ams-footer-socials {
+	display: flex;
+	gap: 1.25rem;
+
+	a {
+		color: var(--ams-gray5);
+
+		&:hover {
+			color: var(--ams-red);
+		}
+	}
+}
+
+.ams-footer-logo-lockup {
+	display: flex;
+	gap: 1.25rem;
+	align-items: center;
+
+	span {
+		font-weight: 500;
+
+		strong {
+			font-weight: 500;
+			position: relative;
+
+			&::after {
+				content: "";
+				width: 130%;
+				height: 175%;
+				position: absolute;
+				left: -7px;
+				top: -8px;
+				background-size: cover;
+				background-image: url(/assets/images/rough-circle.svg);
+			}
+		}
+	}
+}
+
+.ams-footer-copyright {
+	font-weight: 500;
+	color: var(--ams-gray3);
+}

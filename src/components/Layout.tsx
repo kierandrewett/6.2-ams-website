@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { Footer } from "./Footer";
 import { Header } from "./Header";
 
 export const Layout = ({
@@ -25,6 +26,7 @@ export const Layout = ({
 			<main id={"main-content"} className={`page-${page}`}>
 				{children}
 			</main>
+			<Footer />
 			<Link href="/solutions">Hello test</Link>
 		</>
 	);
