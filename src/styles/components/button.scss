@@ -34,7 +34,8 @@
 
 	transition: 0.075s background-color ease-out;
 
-	&:hover {
+	&:hover,
+	&:focus-visible {
 		background-color: var(--hover-bg-colour, var(--default-hover-bg-colour));
 	}
 
