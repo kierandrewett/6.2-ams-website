@@ -1,4 +1,5 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import Link from "next/link";
 import React from "react";
 import { DockerLogo } from "../art/client-logos/Docker";
 import { GoogleLogo } from "../art/client-logos/Google";
@@ -390,6 +391,15 @@ export default function Home() {
 							>
 								{formState == FormState.Submitting ? "Sending..." : "Send message"}
 							</Button>
+
+							<small className={"ams-text-center"}>
+								By clicking "Send message", you agree AMS can store your name, email
+								address and message for up to 30 days as outlined in our{" "}
+								<Link target={"_blank"} href={"/resources/privacy"}>
+									Privacy Policy
+								</Link>
+								.
+							</small>
 						</form>
 					) : (
 						<p style={{ height: "400px" }}>
