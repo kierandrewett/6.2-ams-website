@@ -1,3 +1,4 @@
+import { verify } from "hcaptcha";
 import { NextApiRequest, NextApiResponse } from "next";
 import { openDatabaseConnection } from "../../lib/database";
 
@@ -19,11 +20,22 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 				!body.name ||
 				!body.emailAddress ||
 				!body.message ||
+				!body.securityToken ||
 				!body.name.trim().length ||
 				!body.emailAddress.trim().length ||
-				!body.message.trim().length
+				!body.message.trim().length ||
+				!body.securityToken.trim().length
 			) {
 				return error(400, "Missing required fields.");
+			}
+
+			const verified = await verify(
+				process.env.HCAPTCHA_SECRET_KEY as string,
+				body.securityToken
+			);
+
+			if (!verified.success) {
+				return error(400, "Captcha challenge failed, please try again.");
 			}
 
 			if (!emailRegex.test(body.emailAddress)) {

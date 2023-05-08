@@ -10,12 +10,14 @@
         "lint": "node scripts/build.js lint"
     },
     "dependencies": {
+        "@hcaptcha/react-hcaptcha": "^1.8.1",
         "@planetscale/database": "^1.7.0",
         "@types/node": "20.1.0",
         "@types/react": "18.2.6",
         "@types/react-dom": "18.2.4",
         "axios": "^1.4.0",
         "clsx": "^1.2.1",
+        "hcaptcha": "^0.1.1",
         "next": "13.4.1",
         "prettier": "^2.8.8",
         "react": "18.2.0",

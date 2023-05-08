@@ -1,3 +1,4 @@
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import React from "react";
 import { DockerLogo } from "../art/client-logos/Docker";
 import { GoogleLogo } from "../art/client-logos/Google";
@@ -36,8 +37,12 @@ const isJSON = (str: string) => {
 };
 
 export default function Home() {
+	const [token, setToken] = React.useState("");
+	const captchaRef = React.createRef<HCaptcha>();
+
 	const [formState, setFormState] = React.useState(FormState.Idle);
 	const [formError, setFormError] = React.useState<any>();
+	const [formFocused, setFormFocused] = React.useState(false);
 
 	const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -50,6 +55,12 @@ export default function Home() {
 		const message = form.elements.namedItem("message") as HTMLTextAreaElement;
 
 		if (!name || !emailAddress || !message) return;
+
+		if (!token || !token.trim().length) {
+			setFormError("Complete the captcha to continue.");
+			setFormState(FormState.Error);
+			return;
+		}
 
 		setFormError(null);
 		setFormState(FormState.Submitting);
@@ -65,7 +76,8 @@ export default function Home() {
 			body: JSON.stringify({
 				name: name.value,
 				emailAddress: emailAddress.value,
-				message: message.value
+				message: message.value,
+				securityToken: token
 			})
 		}).then(async (res) => {
 			const text = await res.text();
@@ -77,6 +89,10 @@ export default function Home() {
 				setFormError(isJSON(text) ? JSON.parse(text).message : text);
 			}
 		});
+	};
+
+	const onHCaptchaLoad = () => {
+		captchaRef.current?.execute();
 	};
 
 	return (
@@ -314,6 +330,7 @@ export default function Home() {
 								name={"name"}
 								placeholder={"Full name"}
 								disabled={formState == FormState.Submitting}
+								onBlur={() => setFormFocused(true)}
 								required
 							/>
 							<label
@@ -329,6 +346,7 @@ export default function Home() {
 								name={"email_address"}
 								placeholder={"Email address"}
 								disabled={formState == FormState.Submitting}
+								onBlur={() => setFormFocused(true)}
 								required
 							/>
 							<label
@@ -349,8 +367,18 @@ export default function Home() {
 									minHeight: "150px",
 									maxHeight: "300px"
 								}}
+								onBlur={() => setFormFocused(true)}
 								required
 							/>
+
+							{formFocused && (
+								<HCaptcha
+									sitekey={"f70011d7-726f-493c-8cec-9741ac4347e0"}
+									onLoad={onHCaptchaLoad}
+									onVerify={(token) => setToken(token)}
+									ref={captchaRef}
+								/>
+							)}
 
 							{formState == FormState.Error && <Highlight>{formError}</Highlight>}
 
