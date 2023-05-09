@@ -48,16 +48,16 @@ export const Footer = () => {
 
 						<ul>
 							<li>
-								<Link href={"/blog"}>Blog</Link>
+								<Link href={"/business"}>Blog</Link>
 							</li>
 							<li>
-								<Link href={"/case-studies"}>Case Studies</Link>
+								<Link href={"/business/case-studies"}>Case Studies</Link>
 							</li>
 							<li>
-								<Link href={"/partners"}>Partners</Link>
+								<Link href={"/business/partners"}>Partners</Link>
 							</li>
 							<li>
-								<Link href={"/awards"}>Awards</Link>
+								<Link href={"/business/awards"}>Awards</Link>
 							</li>
 						</ul>
 					</li>
