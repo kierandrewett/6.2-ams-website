@@ -1,0 +1,31 @@
+.page-sitemap {
+	.ams-sitemap {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+
+		ul {
+			padding: 2.5rem 0;
+			border-bottom: 1px solid var(--ams-gray1);
+		}
+
+		ul:last-child {
+			border-bottom: none;
+		}
+	}
+
+	@media (max-width: 900px) {
+		.ams-sitemap {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+
+	.ams-sitemap-item {
+		display: flex;
+		gap: 1rem;
+		flex-direction: column;
+
+		a {
+			font-size: 1.125rem;
+		}
+	}
+}

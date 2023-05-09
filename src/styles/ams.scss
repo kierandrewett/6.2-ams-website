@@ -31,6 +31,7 @@ $ams-white: rgb(255, 255, 255);
 
 /* Page styles */
 @use "pages/home";
+@use "pages/sitemap";
 
 /* Built-in modules */
 @use "sass:color";
@@ -107,4 +108,16 @@ body {
 a {
 	color: var(--ams-red);
 	font-weight: 500;
+}
+
+#__next {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main#main-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 }

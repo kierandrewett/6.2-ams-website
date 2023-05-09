@@ -9,10 +9,6 @@ export const Footer = () => {
 	return (
 		<footer className={"ams-footer"}>
 			<div className={"ams-footer-container"}>
-				<Link href={"/"}>
-					<Logo />
-				</Link>
-
 				<ul className={"ams-footer-links"}>
 					<li className={"ams-footer-section"}>
 						<span className={"ams-footer-section-title"}>Solutions</span>

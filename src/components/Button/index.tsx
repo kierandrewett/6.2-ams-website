@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Link from "next/link";
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 export const Button = ({
@@ -22,11 +23,11 @@ export const Button = ({
 	);
 
 	return React.createElement(
-		rest.href ? "a" : "button",
+		rest.href ? (rest.href.startsWith("http") ? "a" : Link) : "button",
 		{
 			...rest,
 			className
-		},
+		} as any,
 		children
 	);
 };
