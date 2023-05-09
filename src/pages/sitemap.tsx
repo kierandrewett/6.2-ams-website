@@ -62,7 +62,7 @@ export default function Sitemap() {
 							</li>
 
 							<li>
-								<Link href={"/contact-us"}>Contact AMS</Link>
+								<Link href={"/contact"}>Contact AMS</Link>
 							</li>
 						</ul>
 
