@@ -44,14 +44,14 @@ export const Header = () => {
 								</Link>
 							</li>
 							<li className={"ams-header-nav-item"}>
-								<Link href="/services">
-									<strong>Services</strong>
+								<Link href="/business">
+									<strong>Business</strong>
 									<ChevronDown />
 								</Link>
 							</li>
 							<li className={"ams-header-nav-item"}>
-								<Link href="/business">
-									<strong>Business</strong>
+								<Link href="/support">
+									<strong>Support</strong>
 									<ChevronDown />
 								</Link>
 							</li>
