@@ -28,25 +28,6 @@
 		);
 	}
 
-	.ams-client-logos {
-		display: flex;
-		gap: 2.5rem;
-		flex-flow: row wrap;
-		justify-content: center;
-	}
-
-	.ams-client-logo {
-		height: 32px;
-		filter: grayscale(100%) brightness(0%);
-		opacity: 0.5;
-		transition: 0.5s all;
-	}
-
-	.ams-client-logo:hover {
-		filter: grayscale(0%);
-		opacity: 1;
-	}
-
 	.ams-netflix-case-study {
 		img {
 			width: 98px;
