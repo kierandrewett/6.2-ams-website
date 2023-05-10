@@ -1,0 +1,15 @@
+.ams-help-info {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+
+        span, a {
+            margin-top: 2px;
+        }
+    }
+}

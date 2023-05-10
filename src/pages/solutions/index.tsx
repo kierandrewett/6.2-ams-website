@@ -116,24 +116,28 @@ export default function Solutions() {
                         <ul className={"ams-help-info"} style={{ marginTop: "2.5rem" }}>
                             <li>
                                 <Phone />
-                                <span>07523 123111 (toll-free)</span>
+                                <p>07523 123111 (toll-free)</p>
                             </li>
                             <li>
                                 <Email />
-                                <a href={"mailto:client-support@ams.co.uk"}>client-support@ams.co.uk</a>
+                                <p>
+                                    <a href={"mailto:client-support@ams.co.uk"}>client-support@ams.co.uk</a>
+                                </p>
                             </li>
                             <li>
                                 <Chat />
-                                <a href={"#"}>Speak to an agent over Live Chat</a>
+                                <p>
+                                    <a href={"#"}>Speak to an agent over Live Chat</a>
+                                </p>
                             </li>
                             <li>
                                 <Post />
-                                <span>
+                                <p>
                                     Applied Management Solutions<br />
                                     1 Broadplane Avenue,<br />
                                     London,<br />
                                     WE31 4AA
-                                </span>
+                                </p>
                             </li>
                         </ul>
 					</div>
