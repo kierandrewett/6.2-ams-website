@@ -66,7 +66,7 @@ export default function Solutions() {
                 <HeroBody>
                     <h1 className={"ams-text-center"}>Why choose us?</h1>
                 </HeroBody>
-				<HeroBody className={"ai-center gap-lg jc-center"}>
+				<HeroBody className={"ai-center gap-xl jc-center"}>
 					<div className={"flex dir-col ai-center"}>
 						<Eyebrow uppercase>
 							Always online
