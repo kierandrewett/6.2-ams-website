@@ -8,8 +8,12 @@ import { Layout } from "../../components/Layout";
 import { Eyebrow } from "../../components/Typography";
 import { Book } from "../../icons/Book";
 import { Chart } from "../../icons/Chart";
+import { Chat } from "../../icons/Chat";
 import { Database } from "../../icons/Database";
+import { Email } from "../../icons/Email";
 import { Graphs } from "../../icons/Graphs";
+import { Phone } from "../../icons/Phone";
+import { Post } from "../../icons/Post";
 
 export default function Solutions() {
     return (
@@ -99,6 +103,39 @@ export default function Solutions() {
                                 <MetaLogo />
                                 <DockerLogo />
                             </div>
+					</div>
+
+                    <div className={"flex dir-col ai-center"}>
+						<Eyebrow uppercase>
+							Fast responsive support
+						</Eyebrow>
+						<div className={"ams-text-center gap-sm flex dir-col"}>
+							<h1>Help is here when you need it</h1>
+                            <p>Free, fast and flexible support for all our customers 24/7 any day of the week, directly to human operators. </p>
+						</div>
+                        <ul className={"ams-help-info"} style={{ marginTop: "2.5rem" }}>
+                            <li>
+                                <Phone />
+                                <span>07523 123111 (toll-free)</span>
+                            </li>
+                            <li>
+                                <Email />
+                                <a href={"mailto:client-support@ams.co.uk"}>client-support@ams.co.uk</a>
+                            </li>
+                            <li>
+                                <Chat />
+                                <a href={"#"}>Speak to an agent over Live Chat</a>
+                            </li>
+                            <li>
+                                <Post />
+                                <span>
+                                    Applied Management Solutions<br />
+                                    1 Broadplane Avenue,<br />
+                                    London,<br />
+                                    WE31 4AA
+                                </span>
+                            </li>
+                        </ul>
 					</div>
                 </HeroBody>
             </Hero>
