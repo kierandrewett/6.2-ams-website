@@ -30,11 +30,13 @@ $ams-white: rgb(255, 255, 255);
 @use "components/footer";
 @use "components/clients";
 @use "components/help";
+@use "components/blog-post";
 
 /* Page styles */
 @use "pages/home";
 @use "pages/sitemap";
 @use "pages/solutions";
+@use "pages/blog";
 
 /* Built-in modules */
 @use "sass:color";

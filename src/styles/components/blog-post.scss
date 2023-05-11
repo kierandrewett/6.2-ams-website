@@ -1,0 +1,21 @@
+.ams-blog-post {
+	text-decoration: none;
+	width: 400px;
+
+	article {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		color: var(--ams-text);
+
+		img {
+			border-radius: 0.75rem;
+		}
+	}
+
+	.ams-blog-post-metadata {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+}

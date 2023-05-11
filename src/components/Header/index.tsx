@@ -40,19 +40,16 @@ export const Header = () => {
 							<li className={"ams-header-nav-item"}>
 								<Link href="/solutions">
 									<strong>Solutions</strong>
-									<ChevronDown />
 								</Link>
 							</li>
 							<li className={"ams-header-nav-item"}>
-								<Link href="/business">
-									<strong>Business</strong>
-									<ChevronDown />
+								<Link href="/blog">
+									<strong>Blog</strong>
 								</Link>
 							</li>
 							<li className={"ams-header-nav-item"}>
 								<Link href="/support">
 									<strong>Support</strong>
-									<ChevronDown />
 								</Link>
 							</li>
 							<li className={"ams-header-nav-item"}>
