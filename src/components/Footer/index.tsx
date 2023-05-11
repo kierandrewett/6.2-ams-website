@@ -15,16 +15,16 @@ export const Footer = () => {
 
 						<ul>
 							<li>
-								<Link href={"/solutions/amstore"}>AMStore</Link>
+								<Link href={"/solutions#amstore"}>AMStore</Link>
 							</li>
 							<li>
-								<Link href={"/solutions/ambuilder"}>AMBuilder</Link>
+								<Link href={"/solutions#ambuilder"}>AMBuilder</Link>
 							</li>
 							<li>
-								<Link href={"/solutions/amreports"}>AMReports</Link>
+								<Link href={"/solutions#amreports"}>AMReports</Link>
 							</li>
 							<li>
-								<Link href={"/solutions/amcat"}>AMCat</Link>
+								<Link href={"/solutions#amcat"}>AMCat</Link>
 							</li>
 						</ul>
 					</li>
@@ -36,7 +36,7 @@ export const Footer = () => {
 								<Link href={"/support"}>Support</Link>
 							</li>
 							<li>
-								<Link href={"/support/new-ticket"}>Helpdesk</Link>
+								<Link href={"/support"}>Helpdesk</Link>
 							</li>
 							<li>
 								<Link href={"/contact"}>Contact Us</Link>
@@ -48,16 +48,10 @@ export const Footer = () => {
 
 						<ul>
 							<li>
-								<Link href={"/business"}>Blog</Link>
+								<Link href={"/blog"}>Blog</Link>
 							</li>
 							<li>
-								<Link href={"/business/case-studies"}>Case Studies</Link>
-							</li>
-							<li>
-								<Link href={"/business/partners"}>Partners</Link>
-							</li>
-							<li>
-								<Link href={"/business/awards"}>Awards</Link>
+								<Link href={"/blog"}>Case Studies</Link>
 							</li>
 						</ul>
 					</li>
@@ -85,9 +79,6 @@ export const Footer = () => {
 						<ul>
 							<li>
 								<Link href={"/about"}>About AMS</Link>
-							</li>
-							<li>
-								<Link href={"/about/news"}>Newsroom</Link>
 							</li>
 							<li>
 								<Link href={"/about/careers"}>Careers</Link>

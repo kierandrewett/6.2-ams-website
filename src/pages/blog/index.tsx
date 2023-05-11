@@ -1,6 +1,6 @@
-import { BlogPost } from "../../components/BlogPost";
 import Hero, { HeroBody } from "../../components/Hero";
 import { Layout } from "../../components/Layout";
+import { Post } from "../../components/Post";
 
 export default function Blog() {
 	return (
@@ -10,9 +10,10 @@ export default function Blog() {
 					<HeroBody>
 						<h1>Blog</h1>
 					</HeroBody>
-					<HeroBody className={"ams-blog-items"}>
-						<BlogPost
+					<HeroBody className={"ams-post-items"}>
+						<Post
 							id={"ams-adobe-partnership"}
+							href={"/blog/ams-adobe-partnership"}
 							category={"Business"}
 							headline={"AMS announces partnership with Adobe"}
 							image={"/assets/images/blog/ams-adobe-partnership.jpg"}
@@ -20,8 +21,9 @@ export default function Blog() {
 							publishedAt={"5th May 2023"}
 						/>
 
-						<BlogPost
+						<Post
 							id={"amstore-version-34"}
+							href={"/blog/amstore-version-34"}
 							category={"Release"}
 							headline={"AMStore version 34 released"}
 							image={"/assets/images/blog/amstore-version-34.jpg"}
@@ -31,8 +33,9 @@ export default function Blog() {
 							publishedAt={"23rd April 2023"}
 						/>
 
-						<BlogPost
+						<Post
 							id={"netflix-case-study"}
+							href={"/blog/netflix-case-study"}
 							category={"Case Study"}
 							headline={"How Netflix has scaled to new heights using AMS"}
 							image={"/assets/images/blog/netflix-case-study.jpg"}

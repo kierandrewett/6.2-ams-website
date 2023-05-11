@@ -1,14 +1,2 @@
 .page-blog {
-	.ams-blog-items {
-		display: flex;
-		gap: 3.125rem;
-		flex-direction: row;
-		flex-flow: row wrap;
-	}
-
-	@media (max-width: 800px) {
-		.ams-blog-post {
-			width: 100%;
-		}
-	}
 }

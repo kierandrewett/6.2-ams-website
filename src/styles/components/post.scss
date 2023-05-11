@@ -1,4 +1,4 @@
-.ams-blog-post {
+.ams-post {
 	text-decoration: none;
 	width: 400px;
 
@@ -13,9 +13,22 @@
 		}
 	}
 
-	.ams-blog-post-metadata {
+	.ams-post-metadata {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+	}
+}
+
+.ams-post-items {
+	display: flex;
+	gap: 3.125rem;
+	flex-direction: row;
+	flex-flow: row wrap;
+}
+
+@media (max-width: 800px) {
+	.ams-post {
+		width: 100%;
 	}
 }

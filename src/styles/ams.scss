@@ -30,7 +30,9 @@ $ams-white: rgb(255, 255, 255);
 @use "components/footer";
 @use "components/clients";
 @use "components/help";
-@use "components/blog-post";
+@use "components/post";
+@use "components/banner";
+@use "components/solutions-list";
 
 /* Page styles */
 @use "pages/home";
@@ -125,4 +127,8 @@ main#main-content {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
+}
+
+* {
+	scroll-margin-top: 4rem;
 }
