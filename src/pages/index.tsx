@@ -193,7 +193,7 @@ export default function Home() {
 								</li>
 							</ul>
 							<Button
-								href={"/solutions/amstore"}
+								href={"/solutions#amstore"}
 								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
 							>
 								Learn more <ArrowRight width={20} />
@@ -226,7 +226,7 @@ export default function Home() {
 								</li>
 							</ul>
 							<Button
-								href={"/solutions/ambuilder"}
+								href={"/solutions#ambuilder"}
 								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
 							>
 								Learn more <ArrowRight width={20} />
@@ -259,7 +259,7 @@ export default function Home() {
 								</li>
 							</ul>
 							<Button
-								href={"/solutions/amreporter"}
+								href={"/solutions#amreporter"}
 								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
 							>
 								Learn more <ArrowRight width={20} />
@@ -292,7 +292,7 @@ export default function Home() {
 								</li>
 							</ul>
 							<Button
-								href={"/solutions/amcat"}
+								href={"/solutions#amcat"}
 								style={{ marginTop: "auto", marginLeft: "-1.25rem" }}
 							>
 								Learn more <ArrowRight width={20} />
