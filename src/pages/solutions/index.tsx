@@ -74,50 +74,6 @@ export default function Solutions() {
 						</p>
 					</div>
 
-					<ul className={"ams-solutions-list"}>
-						<li>
-							<a
-								href="/solutions#amstore"
-								onClick={(e) => onHashChange(e, "amstore")}
-							>
-								<div className="ams-solution-icon">
-									<Database />
-								</div>
-								<span>AMStore</span>
-							</a>
-						</li>
-						<li>
-							<a
-								href="/solutions#ambuilder"
-								onClick={(e) => onHashChange(e, "ambuilder")}
-							>
-								<div className="ams-solution-icon">
-									<Graphs />
-								</div>
-								<span>AMBuilder</span>
-							</a>
-						</li>
-						<li>
-							<a
-								href="/solutions#amreports"
-								onClick={(e) => onHashChange(e, "amreports")}
-							>
-								<div className="ams-solution-icon">
-									<Chart />
-								</div>
-								<span>AMReports</span>
-							</a>
-						</li>
-						<li>
-							<a href="/solutions#amcat" onClick={(e) => onHashChange(e, "amcat")}>
-								<div className="ams-solution-icon">
-									<Book />
-								</div>
-								<span>AMCat</span>
-							</a>
-						</li>
-					</ul>
-
 					<details
 						className={"ams-solution-item"}
 						ref={storeRef}
@@ -155,7 +111,6 @@ export default function Solutions() {
 							</p>
 						</div>
 					</details>
-
 					<details
 						className={"ams-solution-item"}
 						ref={builderRef}
@@ -191,7 +146,6 @@ export default function Solutions() {
 							</p>
 						</div>
 					</details>
-
 					<details
 						className={"ams-solution-item"}
 						ref={reportsRef}
@@ -226,7 +180,6 @@ export default function Solutions() {
 							</p>
 						</div>
 					</details>
-
 					<details
 						className={"ams-solution-item"}
 						ref={catRef}
