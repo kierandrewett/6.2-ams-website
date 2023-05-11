@@ -31,9 +31,11 @@ async function main() {
             const htmlFiles = glob.sync(resolve(distDir, "**", "*.html"));
 
             for (const html of htmlFiles) {
+                const htmlData = readFileSync(html, "utf-8");
+
                 writeFileSync(
                     html,
-                    prettier.format(warningComment + readFileSync(html, "utf-8"), { ...prettierConfig, parser: "html" })
+                    prettier.format(warningComment + htmlData, { ...prettierConfig, parser: "html" })
                 )
             }
         }
