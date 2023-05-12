@@ -13,7 +13,7 @@ export default function Support() {
 		<Layout page={"support"}>
 			<Banner colour={"red"}>
 				<div className={"flex gap-sm ai-center"} style={{ color: "var(--ams-white)" }}>
-					<Asterisk />
+					<Asterisk style={{ minWidth: "24px" }} />
 					<span style={{ fontSize: "1.125rem" }}>
 						<strong>Have an emergency?</strong> Help is at hand, give us a call on our
 						toll-free number at <strong>07523 123111</strong> or{" "}
@@ -30,7 +30,7 @@ export default function Support() {
 					<HeroBody className={"ai-center gap-md"}>
 						<h1>Help & support</h1>
 
-						<form>
+						<form className={"flex jc-center"} style={{ width: "100%" }}>
 							<label
 								className={"ams-visually-hidden"}
 								htmlFor={"ams-search-form--search"}
@@ -44,7 +44,11 @@ export default function Support() {
 								name={"q"}
 								placeholder={"Search by error message or error code"}
 								required
-								style={{ width: "600px", backgroundColor: "#F9F9F9" }}
+								style={{
+									width: "100%",
+									maxWidth: "600px",
+									backgroundColor: "#F9F9F9"
+								}}
 							/>
 						</form>
 

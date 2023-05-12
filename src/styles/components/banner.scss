@@ -1,9 +1,9 @@
 .ams-banner {
-	width: 100%;
-	height: 5rem;
+	width: calc(100% - 2rem * 2);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 1.5rem 2rem;
 }
 
 .ams-banner.red {
