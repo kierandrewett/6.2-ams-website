@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import { Button } from "../components/Button";
 import Hero, { HeroBody } from "../components/Hero";
 import { Layout } from "../components/Layout";
@@ -6,7 +7,25 @@ import { Email } from "../icons/Email";
 import { Phone } from "../icons/Phone";
 import { Twitter } from "../icons/Twitter";
 
+const wait = async (ms: number) => new Promise((r) => setTimeout(() => r(1), ms));
+
+enum FormState {
+	Idle,
+	Submitting,
+	Success
+}
+
 export default function Contact() {
+	const [formState, setFormState] = React.useState(FormState.Idle);
+
+	const onSubmit = async (e: any) => {
+		e.preventDefault();
+
+		setFormState(FormState.Submitting);
+		await wait(1000);
+		setFormState(FormState.Success);
+	};
+
 	return (
 		<Layout page={"contact"}>
 			<Hero size={"sm"}>
@@ -108,62 +127,76 @@ export default function Contact() {
 						</p>
 						<p>Live chat is available from 09:00 to 18:00 BST.</p>
 
-						<form
-							className={"ams-form"}
-							style={{ maxWidth: "400px", marginTop: "1rem" }}
-						>
-							<label
-								className={"ams-visually-hidden"}
-								htmlFor={"ams-contact-form--name"}
+						{formState !== FormState.Success ? (
+							<form
+								className={"ams-form"}
+								style={{ maxWidth: "400px", marginTop: "1rem" }}
+								onSubmit={(e) => onSubmit(e)}
 							>
-								Full name:
-							</label>
-							<input
-								id={"ams-contact-form--name"}
-								className={"ams-input"}
-								type={"text"}
-								name={"name"}
-								placeholder={"Full name"}
-								required
-							/>
-							<label
-								className={"ams-visually-hidden"}
-								htmlFor={"ams-contact-form--email_address"}
-							>
-								Email address:
-							</label>
-							<input
-								id={"ams-contact-form--email_address"}
-								className={"ams-input"}
-								type={"email"}
-								name={"email_address"}
-								placeholder={"Email address"}
-								required
-							/>
-							<label
-								className={"ams-visually-hidden"}
-								htmlFor={"ams-contact-form--message"}
-							>
-								Enter a message:
-							</label>
-							<textarea
-								id={"ams-contact-form--message"}
-								className={"ams-input"}
-								name={"message"}
-								placeholder={"Describe in a few words what you want to talk about"}
-								minLength={25}
-								style={{
-									resize: "vertical",
-									minHeight: "150px",
-									maxHeight: "300px"
-								}}
-								required
-							/>
+								<label
+									className={"ams-visually-hidden"}
+									htmlFor={"ams-contact-form--name"}
+								>
+									Full name:
+								</label>
+								<input
+									id={"ams-contact-form--name"}
+									className={"ams-input"}
+									type={"text"}
+									name={"name"}
+									placeholder={"Full name"}
+									disabled={formState !== FormState.Idle}
+									required
+								/>
+								<label
+									className={"ams-visually-hidden"}
+									htmlFor={"ams-contact-form--email_address"}
+								>
+									Email address:
+								</label>
+								<input
+									id={"ams-contact-form--email_address"}
+									className={"ams-input"}
+									type={"email"}
+									name={"email_address"}
+									placeholder={"Email address"}
+									disabled={formState !== FormState.Idle}
+									required
+								/>
+								<label
+									className={"ams-visually-hidden"}
+									htmlFor={"ams-contact-form--message"}
+								>
+									Enter a message:
+								</label>
+								<textarea
+									id={"ams-contact-form--message"}
+									className={"ams-input"}
+									name={"message"}
+									placeholder={
+										"Describe in a few words what you want to talk about"
+									}
+									disabled={formState !== FormState.Idle}
+									minLength={25}
+									style={{
+										resize: "vertical",
+										minHeight: "150px",
+										maxHeight: "300px"
+									}}
+									required
+								/>
 
-							<Button colour={"red"} type={"submit"}>
-								Open a live chat
-							</Button>
-						</form>
+								<Button
+									colour={"red"}
+									type={"submit"}
+									disabled={formState !== FormState.Idle}
+								>
+									Open a live chat
+								</Button>
+							</form>
+						) : (
+							<p>Thank you. An agent will be with you shortly.</p>
+						)}
 					</div>
 				</HeroBody>
 			</Hero>

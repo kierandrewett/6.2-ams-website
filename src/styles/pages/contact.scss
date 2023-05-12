@@ -1,6 +1,11 @@
 .page-contact {
 	#contact-hero {
 		width: 100%;
+		background-color: var(--ams-gray2-lighter);
+	}
+
+	#contact-hero .ams-hero-body:first-child {
+		background-color: var(--ams-white);
 	}
 
 	@media (max-width: 1364px) {
