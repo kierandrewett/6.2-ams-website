@@ -33,6 +33,7 @@ $ams-white: rgb(255, 255, 255);
 @use "components/post";
 @use "components/banner";
 @use "components/solutions-list";
+@use "components/lists";
 
 /* Page styles */
 @use "pages/home";
@@ -40,6 +41,7 @@ $ams-white: rgb(255, 255, 255);
 @use "pages/solutions";
 @use "pages/blog";
 @use "pages/about";
+@use "pages/resources";
 
 /* Built-in modules */
 @use "sass:color";
