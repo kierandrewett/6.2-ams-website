@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import React from "react";
 import { Button } from "../../components/Button";
 import Hero, { HeroBody } from "../../components/Hero";
 
@@ -40,3 +41,12 @@ export const ResourcesHero = () => {
 		</Hero>
 	);
 };
+
+export default function Resources() {
+	const router = useRouter();
+	React.useEffect(() => {
+		router.push("/resources/privacy");
+	}, []);
+
+	return <></>
+}
