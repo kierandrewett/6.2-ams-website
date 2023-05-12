@@ -24,7 +24,7 @@ export default function About() {
 					<ul className={"ams-about-facts"}>
 						<li>
 							<span>
-								Founded <h1>1987</h1> in the UK
+								Founded in <h1>1987</h1> in the UK
 							</span>
 						</li>
 
