@@ -1,0 +1,25 @@
+.page-contact {
+	#contact-hero {
+		width: 100%;
+	}
+
+	@media (max-width: 1364px) {
+		#contact-hero {
+			flex-direction: column;
+
+			.ams-hero-body {
+				width: 100% !important;
+				max-width: 100% !important;
+			}
+
+			.ams-hero-body > div {
+				width: calc(100% - 2rem * 2) !important;
+				padding: 2rem !important;
+			}
+
+			.ams-hero-body:first-child {
+				align-items: flex-start;
+			}
+		}
+	}
+}
