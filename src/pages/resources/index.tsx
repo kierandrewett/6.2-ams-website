@@ -7,7 +7,11 @@ export const ResourcesHero = () => {
 
 	return (
 		<Hero size={"sm"}>
-			<HeroBody direction={"h"} style={{ justifyContent: "space-between" }}>
+			<HeroBody
+				direction={"h"}
+				className={"gap-sm"}
+				style={{ justifyContent: "space-between" }}
+			>
 				<h1>Resources</h1>
 
 				<div className={"flex ai-center gap-sm"}>
