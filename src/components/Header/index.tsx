@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
-import { ChevronDown } from "../../icons/ChevronDown";
 import { Hamburger } from "../../icons/Hamburger";
 import { Button } from "../Button";
 import { Logo } from "../Logo";
@@ -90,25 +89,22 @@ export const Header = () => {
 						<li className={"ams-header-nav-item"}>
 							<Link href="/solutions">
 								<strong>Solutions</strong>
-								<ChevronDown />
 							</Link>
 						</li>
 						<li className={"ams-header-nav-item"}>
-							<Link href="/services">
-								<strong>Services</strong>
-								<ChevronDown />
+							<Link href="/blog">
+								<strong>Blog</strong>
 							</Link>
 						</li>
 						<li className={"ams-header-nav-item"}>
-							<Link href="/business">
-								<strong>Business</strong>
-								<ChevronDown />
+							<Link href="/support">
+								<strong>Support</strong>
 							</Link>
 						</li>
 						<li className={"ams-header-nav-item"}>
-							<a>
+							<Link href="/about">
 								<strong>About</strong>
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</nav>
