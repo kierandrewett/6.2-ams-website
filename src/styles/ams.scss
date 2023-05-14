@@ -1,3 +1,4 @@
+/* Defines the brand styles we created in the moodboard */
 $ams-red: rgb(243, 18, 18);
 $ams-orange: rgb(253, 110, 8);
 $ams-yellow: rgb(255, 199, 0);
@@ -14,6 +15,9 @@ $ams-gray5: rgb(43, 43, 43);
 $ams-gray6: rgb(18, 18, 18);
 
 $ams-white: rgb(255, 255, 255);
+
+/* @use is a way of importing/including other .scss files into this one */
+/* It means we can contain styles into other files, reducing the complexity of a single main file */
 
 /* Primitive styles */
 @use "reset";
@@ -47,6 +51,8 @@ $ams-white: rgb(255, 255, 255);
 /* Built-in modules */
 @use "sass:color";
 
+/* This mixin will generate hover, active and lighter variants of all our colours */
+/* Removes the need for someone to manually tweak the colours to get these variants */
 @mixin generate_colourways($name, $property) {
 	--ams-#{$name}: #{$property};
 	--ams-#{$name}-hover: #{if(
@@ -63,7 +69,11 @@ $ams-white: rgb(255, 255, 255);
 }
 
 /* Theme */
+/* The :root element here refers to the main <html> tag in our document. */
 :root {
+	/* We're using CSS variables to ensure that our colours can be used throughout the CSS */
+	/* You define a CSS variable using --<name>: <value> */
+	/* Then this CSS variable can be used throughout the CSS using var(--<name>); */
 	--ams-background: var(--ams-white);
 	--ams-text: var(--ams-gray6);
 	--ams-text-hover: var(--ams-gray6-hover);
@@ -92,6 +102,7 @@ $ams-white: rgb(255, 255, 255);
 	--ams-guttered-width: 1300px;
 }
 
+/* Remove any user agent styling that the browser has set by default + apply our custom font */
 html,
 body {
 	margin: 0;
@@ -100,39 +111,50 @@ body {
 	font-family: var(--ams-font);
 }
 
+/* Change the background and colour of the text to our colours */
 body {
 	background-color: var(--ams-background);
 	color: var(--ams-text);
 }
 
+/* Add a custom selection colour for when the user selects text on the page */
 ::selection {
 	background-color: var(--ams-red);
 	color: var(--ams-white);
 }
 
+/* This targets people who use a keyboard for 
+/* navigation, we're adding a better "focus ring" around 
+/* everything to make it easier to see */
 :focus-visible {
 	outline: 2px solid var(--ams-red);
 	outline-offset: 4px;
 	box-shadow: 0px 0px 0px 4px var(--ams-white);
 }
 
+/* Add a red colour and bold the text for all a tags */
 a {
 	color: var(--ams-red);
 	font-weight: 500;
 }
 
+/* Add a default height for the app mount point and make it flexbox */
 #__next {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
 
+/* Make the main element flexbox */
 main#main-content {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 }
 
+/* Add a scroll margin to all elements */
+/* Scroll margin dictates how far the bounds 
+/* should be between anchor tags when you go to a anchor on the page */
 * {
 	scroll-margin-top: 4rem;
 }

@@ -8,6 +8,7 @@ import { NetflixLogo } from "../art/client-logos/Netflix";
 import { TwitterLogo } from "../art/client-logos/Twitter";
 import { HomeHeroAMSFeatures } from "../art/home-hero-ams-features";
 import { Button } from "../components/Button";
+import HTMLComment from "../components/HTMLComment";
 import Hero, { HeroBody } from "../components/Hero";
 import { Layout } from "../components/Layout";
 import { Eyebrow, Highlight } from "../components/Typography";
@@ -44,10 +45,13 @@ export default function Home() {
 	const [formState, setFormState] = React.useState(FormState.Idle);
 	const [formError, setFormError] = React.useState<any>();
 	const [formFocused, setFormFocused] = React.useState(false);
+	const [formSubmitted, setFormSubmitted] = React.useState(false);
 
 	const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		e.stopPropagation();
+
+		setFormSubmitted(false);
 
 		const form = e.target as HTMLFormElement;
 
@@ -84,7 +88,8 @@ export default function Home() {
 			const text = await res.text();
 
 			if (res.status == 200) {
-				setFormState(FormState.Success);
+				setFormState(FormState.Idle);
+				setFormSubmitted(true);
 			} else {
 				setFormState(FormState.Error);
 				setFormError(isJSON(text) ? JSON.parse(text).message : text);
@@ -98,6 +103,10 @@ export default function Home() {
 
 	return (
 		<Layout page={"home"}>
+			<HTMLComment>
+				Main home page section, gives a brief insight into what we do at AMS
+			</HTMLComment>
+
 			<Hero id={"home-hero-ams-intro"} size={"lg"}>
 				<HeroBody direction={"h"} className={"ai-center"}>
 					<HeroBody style={{ maxWidth: "450px" }}>
@@ -105,10 +114,18 @@ export default function Home() {
 						<h1>Tailored Solutions for Business Growth</h1>
 					</HeroBody>
 					<HeroBody style={{ paddingLeft: "6rem" }}>
+						<HTMLComment>
+							Main home section image, using SVGs here as it means we get infinite
+							scaling
+						</HTMLComment>
 						<HomeHeroAMSFeatures style={{ width: "100%" }} />
 					</HeroBody>
 				</HeroBody>
 			</Hero>
+
+			<HTMLComment>
+				Second home section, this one shows the different clients that use our services
+			</HTMLComment>
 
 			<Hero
 				id={"home-hero-ams-case-studies"}
@@ -120,6 +137,8 @@ export default function Home() {
 					<h2 className={"ams-text-center"}>Trusted by industry leaders.</h2>
 
 					<div className={"ams-client-logos"}>
+						<HTMLComment>Client logos as SVGs</HTMLComment>
+
 						<NetflixLogo />
 						<GoogleLogo />
 						<TwitterLogo />
@@ -143,6 +162,10 @@ export default function Home() {
 							</h4>
 						</div>
 					</div>
+
+					<HTMLComment>
+						Using a blockquote element here as it follows HTML semantics
+					</HTMLComment>
 
 					<blockquote>
 						<h3 style={{ maxWidth: "900px" }} className={"ams-text-center"}>
@@ -312,101 +335,112 @@ export default function Home() {
 						</p>
 					</div>
 
-					{formState !== FormState.Success ? (
-						<form
-							className={"ams-form"}
-							style={{ maxWidth: "400px", minWidth: "400px" }}
-							onSubmit={(e) => onFormSubmit(e)}
+					<HTMLComment>Start of basic contact form for AMS</HTMLComment>
+
+					<form
+						className={"ams-form"}
+						style={{ maxWidth: "400px", minWidth: "400px" }}
+						onSubmit={(e) => onFormSubmit(e)}
+					>
+						<HTMLComment>
+							The label element is hidden to users, but is still picked up by screen
+							readers for accessibility reasons
+						</HTMLComment>
+						<label className={"ams-visually-hidden"} htmlFor={"ams-contact-form--name"}>
+							Full name:
+						</label>
+						<input
+							id={"ams-contact-form--name"}
+							className={"ams-input"}
+							type={"text"}
+							name={"name"}
+							placeholder={"Full name"}
+							disabled={formState == FormState.Submitting}
+							onBlur={() => setFormFocused(true)}
+							required
+						/>
+						<label
+							className={"ams-visually-hidden"}
+							htmlFor={"ams-contact-form--email_address"}
 						>
-							<label
-								className={"ams-visually-hidden"}
-								htmlFor={"ams-contact-form--name"}
-							>
-								Full name:
-							</label>
-							<input
-								id={"ams-contact-form--name"}
-								className={"ams-input"}
-								type={"text"}
-								name={"name"}
-								placeholder={"Full name"}
-								disabled={formState == FormState.Submitting}
-								onBlur={() => setFormFocused(true)}
-								required
+							Email address:
+						</label>
+						<input
+							id={"ams-contact-form--email_address"}
+							className={"ams-input"}
+							type={"email"}
+							name={"email_address"}
+							placeholder={"Email address"}
+							disabled={formState == FormState.Submitting}
+							onBlur={() => setFormFocused(true)}
+							required
+						/>
+						<label
+							className={"ams-visually-hidden"}
+							htmlFor={"ams-contact-form--message"}
+						>
+							Enter a message:
+						</label>
+						<HTMLComment>
+							Using a textarea element as it means we can get multi line responses
+							from users
+						</HTMLComment>
+						<textarea
+							id={"ams-contact-form--message"}
+							className={"ams-input"}
+							name={"message"}
+							placeholder={"Message"}
+							minLength={25}
+							disabled={formState == FormState.Submitting}
+							style={{
+								resize: "vertical",
+								minHeight: "150px",
+								maxHeight: "300px"
+							}}
+							onBlur={() => setFormFocused(true)}
+							required
+						/>
+
+						<HTMLComment>
+							The captcha element will go here, it appears client side and is
+							introduced using JavaScript so it won't appear in the static HTML
+							document.
+						</HTMLComment>
+
+						{formFocused && (
+							<HCaptcha
+								sitekey={"f70011d7-726f-493c-8cec-9741ac4347e0"}
+								onLoad={onHCaptchaLoad}
+								onVerify={(token) => setToken(token)}
+								ref={captchaRef}
 							/>
-							<label
-								className={"ams-visually-hidden"}
-								htmlFor={"ams-contact-form--email_address"}
-							>
-								Email address:
-							</label>
-							<input
-								id={"ams-contact-form--email_address"}
-								className={"ams-input"}
-								type={"email"}
-								name={"email_address"}
-								placeholder={"Email address"}
-								disabled={formState == FormState.Submitting}
-								onBlur={() => setFormFocused(true)}
-								required
-							/>
-							<label
-								className={"ams-visually-hidden"}
-								htmlFor={"ams-contact-form--message"}
-							>
-								Enter a message:
-							</label>
-							<textarea
-								id={"ams-contact-form--message"}
-								className={"ams-input"}
-								name={"message"}
-								placeholder={"Message"}
-								minLength={25}
-								disabled={formState == FormState.Submitting}
-								style={{
-									resize: "vertical",
-									minHeight: "150px",
-									maxHeight: "300px"
-								}}
-								onBlur={() => setFormFocused(true)}
-								required
-							/>
+						)}
 
-							{formFocused && (
-								<HCaptcha
-									sitekey={"f70011d7-726f-493c-8cec-9741ac4347e0"}
-									onLoad={onHCaptchaLoad}
-									onVerify={(token) => setToken(token)}
-									ref={captchaRef}
-								/>
-							)}
+						{formState == FormState.Error && <Highlight>{formError}</Highlight>}
 
-							{formState == FormState.Error && <Highlight>{formError}</Highlight>}
+						<HTMLComment>
+							Submit button will send the information to the AMS API for it to be sent
+							to a database
+						</HTMLComment>
 
-							<Button
-								colour={"red"}
-								type={"submit"}
-								style={{ margin: "0 auto" }}
-								disabled={formState == FormState.Submitting}
-							>
-								{formState == FormState.Submitting ? "Sending..." : "Send message"}
-							</Button>
+						<Button
+							colour={"red"}
+							type={"submit"}
+							style={{ margin: "0 auto" }}
+							disabled={formState == FormState.Submitting}
+						>
+							{formState == FormState.Submitting ? "Sending..." : "Send message"}
+						</Button>
 
-							<small className={"ams-text-center"}>
-								By clicking "Send message", you agree AMS can store your name, email
-								address and message for up to 30 days as outlined in our{" "}
-								<Link target={"_blank"} href={"/resources/privacy"}>
-									Privacy Policy
-								</Link>
-								.
-							</small>
-						</form>
-					) : (
-						<p style={{ height: "400px" }}>
-							Thank you! We have received your message and will get back to you
-							shortly.
-						</p>
-					)}
+						<small className={"ams-text-center"}>
+							By clicking "Send message", you agree AMS can store your name, email
+							address and message for up to 30 days as outlined in our{" "}
+							<Link target={"_blank"} href={"/resources/privacy"}>
+								Privacy Policy
+							</Link>
+							.
+						</small>
+					</form>
 				</HeroBody>
 			</Hero>
 		</Layout>

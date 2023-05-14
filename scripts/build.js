@@ -31,7 +31,9 @@ async function main() {
             const htmlFiles = glob.sync(resolve(distDir, "**", "*.html"));
 
             for (const html of htmlFiles) {
-                const htmlData = readFileSync(html, "utf-8");
+                let htmlData = readFileSync(html, "utf-8");
+
+                htmlData = htmlData.replace(/\<div class="__html_comment"\>/g, "").replace(/--><\/div>/g, "-->")
 
                 writeFileSync(
                     html,
