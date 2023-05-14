@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Banner } from "../../components/Banner";
 import Hero, { HeroBody } from "../../components/Hero";
 import { Layout } from "../../components/Layout";
@@ -17,9 +18,9 @@ export default function Support() {
 					<span style={{ fontSize: "1.125rem" }}>
 						<strong>Have an emergency?</strong> Help is at hand, give us a call on our
 						toll-free number at <strong>07523 123111</strong> or{" "}
-						<a href={"#"} style={{ color: "var(--ams-white)" }}>
+						<Link href={"/contact"} style={{ color: "var(--ams-white)" }}>
 							speak to an agent via Live Chat
-						</a>
+						</Link>
 						.
 					</span>
 				</div>
