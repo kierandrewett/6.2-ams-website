@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { DockerLogo } from "../../art/client-logos/Docker";
 import { GoogleLogo } from "../../art/client-logos/Google";
@@ -295,7 +296,7 @@ export default function Solutions() {
 							<li>
 								<Chat />
 								<p>
-									<a href={"#"}>Speak to an agent over Live Chat</a>
+									<Link href={"/contact"}>Speak to an agent over Live Chat</Link>
 								</p>
 							</li>
 							<li>
