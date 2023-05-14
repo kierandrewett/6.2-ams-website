@@ -45,13 +45,10 @@ export default function Home() {
 	const [formState, setFormState] = React.useState(FormState.Idle);
 	const [formError, setFormError] = React.useState<any>();
 	const [formFocused, setFormFocused] = React.useState(false);
-	const [formSubmitted, setFormSubmitted] = React.useState(false);
 
 	const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		e.stopPropagation();
-
-		setFormSubmitted(false);
 
 		const form = e.target as HTMLFormElement;
 
@@ -88,8 +85,7 @@ export default function Home() {
 			const text = await res.text();
 
 			if (res.status == 200) {
-				setFormState(FormState.Idle);
-				setFormSubmitted(true);
+				setFormState(FormState.Success);
 			} else {
 				setFormState(FormState.Error);
 				setFormError(isJSON(text) ? JSON.parse(text).message : text);
@@ -337,110 +333,120 @@ export default function Home() {
 
 					<HTMLComment>Start of basic contact form for AMS</HTMLComment>
 
-					<form
-						className={"ams-form"}
-						style={{ maxWidth: "400px", minWidth: "400px" }}
-						onSubmit={(e) => onFormSubmit(e)}
-					>
-						<HTMLComment>
-							The label element is hidden to users, but is still picked up by screen
-							readers for accessibility reasons
-						</HTMLComment>
-						<label className={"ams-visually-hidden"} htmlFor={"ams-contact-form--name"}>
-							Full name:
-						</label>
-						<input
-							id={"ams-contact-form--name"}
-							className={"ams-input"}
-							type={"text"}
-							name={"name"}
-							placeholder={"Full name"}
-							disabled={formState == FormState.Submitting}
-							onBlur={() => setFormFocused(true)}
-							required
-						/>
-						<label
-							className={"ams-visually-hidden"}
-							htmlFor={"ams-contact-form--email_address"}
+					{formState !== FormState.Success ? (
+						<form
+							className={"ams-form"}
+							style={{ maxWidth: "400px", minWidth: "400px" }}
+							onSubmit={(e) => onFormSubmit(e)}
 						>
-							Email address:
-						</label>
-						<input
-							id={"ams-contact-form--email_address"}
-							className={"ams-input"}
-							type={"email"}
-							name={"email_address"}
-							placeholder={"Email address"}
-							disabled={formState == FormState.Submitting}
-							onBlur={() => setFormFocused(true)}
-							required
-						/>
-						<label
-							className={"ams-visually-hidden"}
-							htmlFor={"ams-contact-form--message"}
-						>
-							Enter a message:
-						</label>
-						<HTMLComment>
-							Using a textarea element as it means we can get multi line responses
-							from users
-						</HTMLComment>
-						<textarea
-							id={"ams-contact-form--message"}
-							className={"ams-input"}
-							name={"message"}
-							placeholder={"Message"}
-							minLength={25}
-							disabled={formState == FormState.Submitting}
-							style={{
-								resize: "vertical",
-								minHeight: "150px",
-								maxHeight: "300px"
-							}}
-							onBlur={() => setFormFocused(true)}
-							required
-						/>
-
-						<HTMLComment>
-							The captcha element will go here, it appears client side and is
-							introduced using JavaScript so it won't appear in the static HTML
-							document.
-						</HTMLComment>
-
-						{formFocused && (
-							<HCaptcha
-								sitekey={"f70011d7-726f-493c-8cec-9741ac4347e0"}
-								onLoad={onHCaptchaLoad}
-								onVerify={(token) => setToken(token)}
-								ref={captchaRef}
+							<HTMLComment>
+								The label element is hidden to users, but is still picked up by
+								screen readers for accessibility reasons
+							</HTMLComment>
+							<label
+								className={"ams-visually-hidden"}
+								htmlFor={"ams-contact-form--name"}
+							>
+								Full name:
+							</label>
+							<input
+								id={"ams-contact-form--name"}
+								className={"ams-input"}
+								type={"text"}
+								name={"name"}
+								placeholder={"Full name"}
+								disabled={formState == FormState.Submitting}
+								onBlur={() => setFormFocused(true)}
+								required
 							/>
-						)}
+							<label
+								className={"ams-visually-hidden"}
+								htmlFor={"ams-contact-form--email_address"}
+							>
+								Email address:
+							</label>
+							<input
+								id={"ams-contact-form--email_address"}
+								className={"ams-input"}
+								type={"email"}
+								name={"email_address"}
+								placeholder={"Email address"}
+								disabled={formState == FormState.Submitting}
+								onBlur={() => setFormFocused(true)}
+								required
+							/>
+							<label
+								className={"ams-visually-hidden"}
+								htmlFor={"ams-contact-form--message"}
+							>
+								Enter a message:
+							</label>
+							<HTMLComment>
+								Using a textarea element as it means we can get multi line responses
+								from users
+							</HTMLComment>
+							<textarea
+								id={"ams-contact-form--message"}
+								className={"ams-input"}
+								name={"message"}
+								placeholder={"Message"}
+								minLength={25}
+								disabled={formState == FormState.Submitting}
+								style={{
+									resize: "vertical",
+									minHeight: "150px",
+									maxHeight: "300px"
+								}}
+								onBlur={() => setFormFocused(true)}
+								required
+							/>
 
-						{formState == FormState.Error && <Highlight>{formError}</Highlight>}
+							<HTMLComment>
+								The captcha element will go here, it appears client side and is
+								introduced using JavaScript so it won't appear in the static HTML
+								document.
+							</HTMLComment>
 
-						<HTMLComment>
-							Submit button will send the information to the AMS API for it to be sent
-							to a database
-						</HTMLComment>
+							{formFocused && (
+								<HCaptcha
+									sitekey={"f70011d7-726f-493c-8cec-9741ac4347e0"}
+									onLoad={onHCaptchaLoad}
+									onVerify={(token) => setToken(token)}
+									ref={captchaRef}
+								/>
+							)}
 
-						<Button
-							colour={"red"}
-							type={"submit"}
-							style={{ margin: "0 auto" }}
-							disabled={formState == FormState.Submitting}
-						>
-							{formState == FormState.Submitting ? "Sending..." : "Send message"}
-						</Button>
+							{formState == FormState.Error && <Highlight>{formError}</Highlight>}
 
-						<small className={"ams-text-center"}>
-							By clicking "Send message", you agree AMS can store your name, email
-							address and message for up to 30 days as outlined in our{" "}
-							<Link target={"_blank"} href={"/resources/privacy"}>
-								Privacy Policy
-							</Link>
-							.
-						</small>
-					</form>
+							<HTMLComment>
+								Submit button will send the information to the AMS API for it to be
+								sent to a database
+							</HTMLComment>
+
+							<Button
+								colour={"red"}
+								type={"submit"}
+								style={{ margin: "0 auto" }}
+								disabled={formState == FormState.Submitting}
+							>
+								{formState == FormState.Submitting ? "Sending..." : "Send message"}
+							</Button>
+
+							<small className={"ams-text-center"}>
+								By clicking "Send message", you agree AMS can store your name, email
+								address and message for up to 30 days as outlined in our{" "}
+								<Link target={"_blank"} href={"/resources/privacy"}>
+									Privacy Policy
+								</Link>
+								.
+							</small>
+						</form>
+					) : (
+						<p style={{ height: "400px" }}>
+							Thank you! We have received your message and will get back to you
+							shortly.
+						</p>
+					)}
 				</HeroBody>
 			</Hero>
 		</Layout>
