@@ -29,7 +29,7 @@ export const posts = [
 
 export default function Blog() {
 	return (
-		<Layout page={"blog"}>
+		<Layout page={"blog"} title={"Blog"}>
 			<Hero size={"sm"}>
 				<HeroBody className={"gap-md"}>
 					<HeroBody>

@@ -5,7 +5,7 @@ import { NotFoundIcon } from "../icons/NotFoundIcon";
 
 export default function NotFound() {
 	return (
-		<Layout page={"404"}>
+		<Layout page={"404"} title={"404"}>
 			<Hero className={"ai-center"} style={{ flex: 1 }}>
 				<HeroBody className={"ai-center gap-md"}>
 					<NotFoundIcon />

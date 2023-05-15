@@ -4,7 +4,7 @@ import { Layout } from "../components/Layout";
 
 export default function Sitemap() {
 	return (
-		<Layout page={"sitemap"}>
+		<Layout page={"sitemap"} title={"Sitemap"}>
 			<Hero size={"sm"} className={"ai-center"}>
 				<HeroBody>
 					<h1>Sitemap</h1>

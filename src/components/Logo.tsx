@@ -1,3 +1,6 @@
+// Component that prints the AMS logo anywhere it is used.
+// It is commonly used in the header and footer of the website.
+// There is a prop called inverted that can be used to change the color of the logo.
 export const Logo = ({ inverted }: { inverted?: boolean }) => {
 	return (
 		<svg

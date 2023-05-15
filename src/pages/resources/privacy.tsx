@@ -11,7 +11,7 @@ import { UserPinCircle } from "../../icons/UserPinCircle";
 
 export default function PrivacyPolicy() {
 	return (
-		<Layout page={"resources-privacy"}>
+		<Layout page={"resources-privacy"} title={"Privacy Policy"}>
 			<ResourcesHero />
 
 			<Hero style={{ "--padding-y": 0 } as any}>

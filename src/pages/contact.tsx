@@ -27,7 +27,7 @@ export default function Contact() {
 	};
 
 	return (
-		<Layout page={"contact"}>
+		<Layout page={"contact"} title={"Contact Us"}>
 			<Hero size={"sm"}>
 				<HeroBody className={"gap-sm"}>
 					<h1>Contact AMS</h1>

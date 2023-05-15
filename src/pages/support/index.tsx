@@ -11,7 +11,7 @@ import { Graphs } from "../../icons/Graphs";
 
 export default function Support() {
 	return (
-		<Layout page={"support"}>
+		<Layout page={"support"} title={"Support"}>
 			<Banner colour={"red"}>
 				<div className={"flex gap-sm ai-center"} style={{ color: "var(--ams-white)" }}>
 					<Asterisk style={{ minWidth: "24px" }} />

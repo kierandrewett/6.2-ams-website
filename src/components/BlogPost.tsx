@@ -7,7 +7,7 @@ export const BlogPost = ({ id, children }: { id: string; children?: any }) => {
 	const post = posts.find((p) => p.id == id);
 
 	return post ? (
-		<Layout page={"blog"}>
+		<Layout page={"blog"} title={post.headline}>
 			<Hero size={"sm"}>
 				<HeroBody className={"gap-md"}>
 					<HeroBody className={"gap-sm"}>

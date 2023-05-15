@@ -64,7 +64,7 @@ export default function Solutions() {
 	}, []);
 
 	return (
-		<Layout page={"solutions"}>
+		<Layout page={"solutions"} title={"Solutions"}>
 			<Hero size={"md"} className={"ai-center"}>
 				<HeroBody className={"ai-center gap-md"} direction={"v"}>
 					<div className={"flex gap-sm dir-col ai-center jc-center"}>

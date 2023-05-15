@@ -16,7 +16,7 @@ export const Layout = ({
 	return (
 		<>
 			<Head>
-				<title>{title ? `${title} - ` : `` + "Applied Management Solutions"}</title>
+				<title>{(title ? `${title} - ` : ``) + "Applied Management Solutions"}</title>
 				<meta name="description" content={description || "Applied Management Solutions"} />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />

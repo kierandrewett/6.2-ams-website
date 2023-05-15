@@ -4,7 +4,7 @@ import { Layout } from "../../components/Layout";
 
 export default function AccessibilityStatement() {
 	return (
-		<Layout page={"resources-accessibility"}>
+		<Layout page={"resources-accessibility"} title={"Accessibility Statement"}>
 			<ResourcesHero />
 
 			<Hero style={{ "--padding-y": 0 } as any}>

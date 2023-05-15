@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Eyebrow } from "./Typography";
 
+// Component to show previews of blog posts on the blog page
 export const Post = ({
 	id,
 	href,

@@ -4,7 +4,7 @@ import { Layout } from "../../components/Layout";
 
 export default function CookiePolicy() {
 	return (
-		<Layout page={"resources-cookies"}>
+		<Layout page={"resources-cookies"} title={"Cookie Policy"}>
 			<ResourcesHero />
 
 			<Hero style={{ "--padding-y": 0 } as any}>
