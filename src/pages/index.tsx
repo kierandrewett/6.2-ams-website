@@ -45,36 +45,51 @@ const isJSON = (str: string) => {
 // The main home page
 //
 export default function Home() {
+	// Store the state of the captcha token
 	const [token, setToken] = React.useState("");
+	// Create a reference to the captcha element so we can access its properties
 	const captchaRef = React.createRef<HCaptcha>();
 
+	// Store the current state of the form and what "stage" we're at in the form's lifecycle
 	const [formState, setFormState] = React.useState(FormState.Idle);
+	// If we get a form error, we will want to store the state of it here
 	const [formError, setFormError] = React.useState<any>();
+	// Keep track of whether any part of the form has been focused yet, so we can load the captcha
 	const [formFocused, setFormFocused] = React.useState(false);
 
+	// This function is fired when the contact form is submitted
 	const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		// Start by preventing the default behaviour of a HTML form i.e. reloading the page
 		e.preventDefault();
 		e.stopPropagation();
 
+		// Access the form element
 		const form = e.target as HTMLFormElement;
 
-		const name = form.elements.namedItem("name") as HTMLInputElement;
-		const emailAddress = form.elements.namedItem("email_address") as HTMLInputElement;
-		const message = form.elements.namedItem("message") as HTMLTextAreaElement;
+		const name = form.elements.namedItem("name") as HTMLInputElement; // Fetch the name input
+		const emailAddress = form.elements.namedItem("email_address") as HTMLInputElement; // Fetch the email address input
+		const message = form.elements.namedItem("message") as HTMLTextAreaElement; // Fetch the message text area
 
+		// If for some reason the inputs are null/undefined, return early
 		if (!name || !emailAddress || !message) return;
 
+		// If the token isn't set yet, tell the user to complete the captcha
 		if (!token || !token.trim().length) {
 			setFormError("Complete the captcha to continue.");
 			setFormState(FormState.Error);
 			return;
 		}
 
+		// Reset the form error
 		setFormError(null);
+
+		// Set the form's state to submitting
 		setFormState(FormState.Submitting);
 
+		// Add an arbritary delay, as our API can easily handle this under 200ms
 		await wait(1000);
 
+		// Send a request to the API we have setup to record the information
 		fetch("/api/contact", {
 			method: "POST",
 			headers: {
@@ -90,15 +105,19 @@ export default function Home() {
 		}).then(async (res) => {
 			const text = await res.text();
 
+			// If the response status code was 200, we mark the form as successful
 			if (res.status == 200) {
 				setFormState(FormState.Success);
 			} else {
+				// Otherwise, there is an error that we need to set
 				setFormState(FormState.Error);
 				setFormError(isJSON(text) ? JSON.parse(text).message : text);
 			}
 		});
 	};
 
+	// This is fired whenever the captcha script is loaded
+	// It performs some internal logic provided by the 3rd party captcha library
 	const onHCaptchaLoad = () => {
 		captchaRef.current?.execute();
 	};

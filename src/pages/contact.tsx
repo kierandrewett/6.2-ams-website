@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { FormEvent } from "react";
 import { Button } from "../components/Button";
 import HTMLComment from "../components/HTMLComment";
 import Hero, { HeroBody } from "../components/Hero";
@@ -21,7 +21,7 @@ export default function Contact() {
 	// formState is used to track the state of the form
 	const [formState, setFormState] = React.useState(FormState.Idle);
 
-	const onSubmit = async (e: any) => {
+	const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		setFormState(FormState.Submitting);

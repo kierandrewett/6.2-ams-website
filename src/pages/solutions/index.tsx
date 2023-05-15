@@ -18,48 +18,58 @@ import { Graphs } from "../../icons/Graphs";
 import { Phone } from "../../icons/Phone";
 import { Post } from "../../icons/Post";
 
+// The solutions page
 export default function Solutions() {
-	const storeRef = React.createRef<HTMLDetailsElement>();
-	const builderRef = React.createRef<HTMLDetailsElement>();
-	const reportsRef = React.createRef<HTMLDetailsElement>();
-	const catRef = React.createRef<HTMLDetailsElement>();
+	const storeRef = React.createRef<HTMLDetailsElement>(); // Create a reference to the AMStore accordion
+	const builderRef = React.createRef<HTMLDetailsElement>(); // Create a reference to the AMBuilder accordion
+	const reportsRef = React.createRef<HTMLDetailsElement>(); // Create a reference to the AMReports accordion
+	const catRef = React.createRef<HTMLDetailsElement>(); // Create a reference to the AMCat accordion
 
-	const onHashChange = (e: any, hash?: string) => {
-		if (e) {
-			e.preventDefault();
-		}
-
-		if (!storeRef || !storeRef.current || !builderRef || !builderRef.current) return;
-
-		const isStore = hash == "amstore";
-		const isBuilder = hash == "ambuilder";
-		const isReports = hash == "amreports";
-		const isCat = hash == "amcat";
-
-		(storeRef.current as any).open = isStore;
-		(builderRef.current as any).open = isBuilder;
-		(reportsRef.current as any).open = isReports;
-		(catRef.current as any).open = isCat;
-	};
-
+	// This function is called whenever someone clicks into any of the accordions
 	const onDetailsOpen = (e: any, hash: string) => {
+		// Get the target element and cast it to a HTMLDetailsElement
 		const el = e.target as HTMLDetailsElement;
+
+		// Re-create the current URL into the URL class
 		const uri = new URL(window.location.href);
 
+		// Check if the accordion is open
 		if (el.open) {
+			// If it is open, add the hash to the URI.
 			uri.hash = "#" + hash;
 		} else {
+			// Otherwise, just clear the hash.
 			uri.hash = "#";
 		}
 
+		// Update the URL in real time without reloading the page
 		window.history.pushState(null, "", uri.href);
 	};
 
+	// This will be called when the component is mounted i.e. when the page loads
 	React.useEffect(() => {
+		// Get the current page hash if it is left over after a reload
 		const hash = window.location.hash.split("#")[1];
 
+		// Check if the hash is defined and has length
 		if (hash && hash.length) {
-			onHashChange(null, hash);
+			// If for some reason the references aren't defined, just skip this
+			if (
+				!storeRef ||
+				!storeRef.current ||
+				!builderRef ||
+				!builderRef.current ||
+				!reportsRef ||
+				!reportsRef.current ||
+				!catRef ||
+				!catRef.current
+			)
+				return;
+
+			(storeRef.current as any).open = hash == "amstore";
+			(builderRef.current as any).open = hash == "ambuilder";
+			(reportsRef.current as any).open = hash == "amreports";
+			(catRef.current as any).open = hash == "amcat";
 		}
 	}, []);
 
