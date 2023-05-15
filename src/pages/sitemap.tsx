@@ -2,6 +2,11 @@ import Link from "next/link";
 import Hero, { HeroBody } from "../components/Hero";
 import { Layout } from "../components/Layout";
 
+// Sitemap page
+// This is a static page that lists all the public-facing pages on the website
+// This lets users navigate to a page they want to visit
+// This also allows web crawler (spiders) bots to easily index all the pages
+// on the website without having to discover them through links
 export default function Sitemap() {
 	return (
 		<Layout page={"sitemap"} title={"Sitemap"}>

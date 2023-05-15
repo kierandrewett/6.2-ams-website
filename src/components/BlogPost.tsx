@@ -3,6 +3,8 @@ import { posts } from "../pages/blog";
 import Hero, { HeroBody } from "./Hero";
 import { Layout } from "./Layout";
 
+// BlogPost component is usually the only component of the blog post page
+// It displays the blog post's title, date, image, and content
 export const BlogPost = ({ id, children }: { id: string; children?: any }) => {
 	const post = posts.find((p) => p.id == id);
 

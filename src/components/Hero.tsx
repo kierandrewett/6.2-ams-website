@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+// Hero components are used to display a large section block that can span the full width of the screen.
+// The Hero component is the parent component that contains the HeroBody component.
 const Hero = ({
 	children,
 	size,

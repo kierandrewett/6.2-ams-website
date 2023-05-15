@@ -2,6 +2,9 @@ import Head from "next/head";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 
+// Layout component
+// Defines the structure of all the pages
+// Wraps the children in a main element
 export const Layout = ({
 	page,
 	children,

@@ -1,3 +1,4 @@
+// As Next.js does not support HTML comments, this component is used to render HTML comments
 const HTMLComment = ({ children }: { children: string | string[] }) => {
 	return (
 		<div

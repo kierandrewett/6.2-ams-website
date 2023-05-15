@@ -6,6 +6,10 @@ import { Button } from "../Button";
 import HTMLComment from "../HTMLComment";
 import { Logo } from "../Logo";
 
+// The Header component is the main navigation for the site, it's a static header.
+// It's a bit more complex than the other components, so we'll break it down a bit.
+// We have different parts shown here such as: the main header, the hamburger menu,
+// and the skip to content link (which is used to get screen readers and tab button users to the content faster).
 export const Header = () => {
 	const ref = React.createRef<HTMLElement>();
 	const ulRef = React.createRef<HTMLUListElement>();
@@ -46,6 +50,9 @@ export const Header = () => {
 						</a>
 					</div>
 
+					<HTMLComment>
+						The navigation links, that lead to the different pages on the site.
+					</HTMLComment>
 					<nav className={"ams-header-nav"}>
 						<ul>
 							<li className={"ams-header-nav-item"}>
@@ -71,6 +78,11 @@ export const Header = () => {
 						</ul>
 					</nav>
 
+					<HTMLComment>The call the action button that says get in touch.</HTMLComment>
+					<HTMLComment>
+						On smaller displays, this will change to a hamburger menu to accomodate the
+						smaller screen size.
+					</HTMLComment>
 					<div className={"ams-header-cta"}>
 						<Button colour={"red"} href={"/contact"}>
 							Get in touch
@@ -86,6 +98,9 @@ export const Header = () => {
 					</div>
 				</div>
 
+				<HTMLComment>
+					The hamburger menu, this is only shown on smaller screens.
+				</HTMLComment>
 				<nav
 					className={"ams-header-hamburger"}
 					ref={ref}

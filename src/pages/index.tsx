@@ -27,8 +27,12 @@ enum FormState {
 	Success
 }
 
+// Wait for a certain amount of time
+// Uses a promise to make it easier to use with async/await
 const wait = async (ms: number) => new Promise((r) => setTimeout(() => r(1), ms));
 
+// Check if a string is valid JSON
+// Tests this by being able to parse it.
 const isJSON = (str: string) => {
 	try {
 		JSON.parse(str);
@@ -38,6 +42,8 @@ const isJSON = (str: string) => {
 	return true;
 };
 
+// The main home page
+//
 export default function Home() {
 	const [token, setToken] = React.useState("");
 	const captchaRef = React.createRef<HCaptcha>();

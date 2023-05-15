@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../components/Button";
+import HTMLComment from "../components/HTMLComment";
 import Hero, { HeroBody } from "../components/Hero";
 import { Layout } from "../components/Layout";
 import { Email } from "../icons/Email";
@@ -15,7 +16,9 @@ enum FormState {
 	Success
 }
 
+// Contact component acts as a page that provides users with a way to contact AMS
 export default function Contact() {
+	// formState is used to track the state of the form
 	const [formState, setFormState] = React.useState(FormState.Idle);
 
 	const onSubmit = async (e: any) => {
@@ -37,6 +40,10 @@ export default function Contact() {
 					</p>
 				</HeroBody>
 			</Hero>
+
+			<HTMLComment>
+				All the ways of contacting AMS including phone, email and live chat.
+			</HTMLComment>
 
 			<Hero id={"contact-hero"} size={"sm"} style={{ padding: 0 }}>
 				<HeroBody className={"ai-end"}>

@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
+// Special typography that is displayed subtly above titles
 export const Eyebrow = ({
 	children,
 	uppercase,
@@ -15,6 +16,7 @@ export const Eyebrow = ({
 	return <h4 className={className}>{children}</h4>;
 };
 
+// Special modifier component that makes text red and bold
 export const Highlight = ({
 	children,
 	...rest
