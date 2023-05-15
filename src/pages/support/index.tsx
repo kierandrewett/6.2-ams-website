@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Banner } from "../../components/Banner";
 import Hero, { HeroBody } from "../../components/Hero";
 import { Layout } from "../../components/Layout";
@@ -10,6 +11,10 @@ import { Database } from "../../icons/Database";
 import { Graphs } from "../../icons/Graphs";
 
 export default function Support() {
+	const router = useRouter();
+
+	const q = router.query.q;
+
 	return (
 		<Layout page={"support"} title={"Support"}>
 			<Banner colour={"red"}>
@@ -43,6 +48,7 @@ export default function Support() {
 								className={"ams-input"}
 								type={"text"}
 								name={"q"}
+								defaultValue={q || ""}
 								placeholder={"Search by error message or error code"}
 								required
 								style={{
@@ -90,6 +96,19 @@ export default function Support() {
 							</li>
 						</ul>
 					</HeroBody>
+
+					{q && q.length && (
+						<HeroBody className={"gap-md"}>
+							<HeroBody>
+								<h1>Search results</h1>
+							</HeroBody>
+							<HeroBody>
+								<p>
+									Unfortunately we couldn't find anything for your search '{q}'.
+								</p>
+							</HeroBody>
+						</HeroBody>
+					)}
 
 					<HeroBody className={"gap-md"}>
 						<HeroBody>
