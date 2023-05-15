@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { Hamburger } from "../../icons/Hamburger";
 import { Button } from "../Button";
+import HTMLComment from "../HTMLComment";
 import { Logo } from "../Logo";
 
 export const Header = () => {
@@ -18,6 +19,12 @@ export const Header = () => {
 
 	return (
 		<>
+			<HTMLComment>
+				This is here for accessibility reasons, so people using a keyboard don't have to tab
+				through the whole header to get to the content, this shortcut allows them to skip
+				straight to content.
+			</HTMLComment>
+
 			<ul className={"ams-a11y"}>
 				<li>
 					<a className={"ams-visually-hidden"} href={"#main-content"} tabIndex={0}>
@@ -25,6 +32,11 @@ export const Header = () => {
 					</a>
 				</li>
 			</ul>
+
+			<HTMLComment>
+				The AMS header, we have both desktop and mobile views shown here, we just swap the
+				two out depending on your screen size (css)
+			</HTMLComment>
 
 			<header className={"ams-header"} id={"nav"}>
 				<div className={"ams-header-container"}>
